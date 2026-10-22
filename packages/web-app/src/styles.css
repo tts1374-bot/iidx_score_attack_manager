@@ -2389,6 +2389,8 @@ label {
   left: 50%;
   transform: translateX(-50%);
   z-index: 40;
+  /* Notifications must not block controls in the update banners underneath. */
+  pointer-events: none;
   background: var(--toast-bg);
   color: var(--toast-text);
   border-radius: 8px;
