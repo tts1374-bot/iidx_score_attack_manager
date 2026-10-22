@@ -15,11 +15,14 @@
 - `packages/pwa`
 
 ## コマンド
+
+Node.js 22.23.4を使用します。Volta経由で導入したpnpmには旧Node.jsが紐づいている場合があるため、実行するNode.jsを明示します。Voltaを使わない環境では、修正版Node.jsを選択したうえで通常の`pnpm`コマンドを実行してください。
+
 ```bash
-pnpm install
-pnpm dev
-pnpm build
-pnpm test
+volta run --node 22.23.4 pnpm install
+volta run --node 22.23.4 pnpm dev
+volta run --node 22.23.4 pnpm build
+volta run --node 22.23.4 pnpm test
 ```
 
 ## 一覧フィルタ確認用サンプルデータ

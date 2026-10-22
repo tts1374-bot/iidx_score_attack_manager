@@ -18,5 +18,8 @@
     "@types/sql.js": "^1.4.9",
     "sql.js": "^1.11.0",
     "vitest": "^2.1.8"
+  },
+  "volta": {
+    "extends": "../../package.json"
   }
 }
