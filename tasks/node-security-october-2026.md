@@ -45,4 +45,4 @@
 - workflow構文・全3selector、Volta継承、依存メタデータ不変、lockfile差分なし、git diff --checkを確認。
 - Node.js本体の攻撃到達性・CVEの再現実験は未検証。公式修正版の実行確認を用い、既存機能の互換性はbuild/testで検証した。
 - 本番deploy、remote DB、releaseは未実行。
-- 独立read-only reviewer /root/node_security_reviewer: COMPLETE、具体的なbypass・回帰指摘なし。通常のpnpmが旧Node.jsを選ぶ端末上の制限はREADMEの明示実行で回避を確認した。
+- 独立read-only reviewer: COMPLETE、具体的なbypass・回帰指摘なし。通常のpnpmが旧Node.jsを選ぶ端末上の制限はREADMEの明示実行で回避を確認した。
