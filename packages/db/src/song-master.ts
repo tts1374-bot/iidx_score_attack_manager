@@ -94,12 +94,12 @@ export class SongMasterService {
     this.fetchImpl = rawFetch.bind(globalThis) as typeof fetch;
   }
 
-  async updateIfNeeded(force = false): Promise<SongMasterUpdateResult> {
+  async updateIfNeeded(force = false, onDownloadStart?: () => void): Promise<SongMasterUpdateResult> {
     if (this.updateInFlight) {
       return this.updateInFlight;
     }
 
-    const task = this.runUpdateIfNeeded(force).finally(() => {
+    const task = this.runUpdateIfNeeded(force, onDownloadStart).finally(() => {
       if (this.updateInFlight === task) {
         this.updateInFlight = null;
       }
@@ -108,7 +108,7 @@ export class SongMasterService {
     return task;
   }
 
-  private async runUpdateIfNeeded(force = false): Promise<SongMasterUpdateResult> {
+  private async runUpdateIfNeeded(force = false, onDownloadStart?: () => void): Promise<SongMasterUpdateResult> {
     const hasCache = await this.appDb.hasSongMaster();
     let latest: SongMasterLatest;
 
@@ -171,6 +171,7 @@ export class SongMasterService {
     }
 
     try {
+      onDownloadStart?.();
       const sqliteUrl = this.buildSqliteDownloadUrl(latest.file_name);
       const bytes = await this.downloadAndVerify(sqliteUrl, latest);
 
